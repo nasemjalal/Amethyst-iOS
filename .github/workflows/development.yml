@@ -43,15 +43,12 @@ jobs:
           brew install make
           # ldid for signing
           brew install ldid
-          # JDK 8 for Java compilation (BOOTJDK)
-          brew install openjdk@8
-          # Link JDK 8 so /usr/libexec/java_home -v 1.8 finds it
-          sudo ln -sfn /opt/homebrew/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
 
       - name: Verify tools
         run: |
           gmake --version
           ldid -v
+          ls /Library/Java/JavaVirtualMachines
           /usr/libexec/java_home -v 1.8
           javac -version
 
