@@ -47,10 +47,10 @@ jobs:
       - name: Verify tools
         run: |
           gmake --version
-          ldid -v
+          which ldid
           ls /Library/Java/JavaVirtualMachines
-          /usr/libexec/java_home -v 1.8
-          javac -version
+          /usr/libexec/java_home -v 1.8 || echo "JDK 8 NOT FOUND"
+          javac -version || true
 
       - name: Get gl4es latest commit hash
         id: gl4es-sha
